@@ -1,0 +1,96 @@
+.THIS { 
+ 
+}
+.THIS .newBtn .homeBtn{
+}
+.THIS .names ,.THIS .names a{
+    color:#f2cf5b;
+}
+.THIS a{
+ text-decoration: underline;
+}
+.THIS   a:hover{
+    color:#f2cf5b;
+    padding:.2rem;
+}
+.THIS .slds-form{
+   
+  border-radius : 3%;
+}
+.THIS .slds-button{
+    background-color: #b96a24 !important;
+    border-color:rgba(111, 47, 8, 0.61) !important; 
+    color:black;
+}
+
+.THIS .statusMessage{
+    background-color:rgba(52, 12, 13, 0.51);
+    padding:0.5rem; 
+    border-radius:2%;
+}
+.THIS .slds-form-element__label{
+    color:white;
+}
+.THIS .statusMessage h2{
+    color:white;
+    font-size:20px; 
+}
+.THIS .error{
+    background-color:red; 
+}
+.THIS .info{
+    background-color:green; 
+}
+.THIS .slds-text-body_small {
+     font-size:10px;
+}
+.THIS .names{
+    margin-left:1rem;
+} 
+.THIS .slds {
+      background-color: beige;
+     border :2px red;
+}
+.THIS .slds-card{
+    background-color:rgba(52, 12, 13, 0.51)!important;
+}
+.THIS .slds-card__footer{
+        background-color: #330d0d;
+        text-align: left;
+         padding-top: 0.5rem; 
+}
+
+.THIS .slds-page-header{
+    background : #dece9b
+}
+.THIS .slds-page-header__title{
+     font-size:20px;
+}
+
+.THIS .slds-truncate{ 
+     width : 100%; 
+} 
+ 
+.THIS .slds-table td{
+    
+}  
+.THIS .slds-avatar{
+    width: 5rem;
+    height: 5rem;
+}
+.THIS .sections{
+    margin:36px; 
+} 
+.THIS .slds-form{ 
+    border-radius : 50%;
+}
+.THIS .slds-form-element__label{
+   font-size:15px; 
+    color: #330d0d;
+    font-weight: bold;
+}
+
+.THIS .container{
+    background-color:#340c0c;
+    border: solid 2px red;
+}
