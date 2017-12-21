@@ -1,0 +1,145 @@
+<aura:component controller="FindDonorsCon"  
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId"
+                access="global">  
+    <aura:handler name="init" action="{!c.allDonors}" 
+                  value="{!this}" />
+    <aura:attribute name="donors" type="Blood_Donor__c[]" />   
+    <aura:attribute name="screenType" 
+                    type="String" 
+                    default="{!$Browser.formFactor}"/> 
+    <aura:attribute name="zip" type="String" default="94065"/> 
+    <aura:attribute name="bgrp" type="String" default="O+"/>
+    <aura:attribute name="bloodTypes" type="String[]" default="O+"/>
+    <aura:attribute name="statusMsg" type="String" />
+    <aura:registerEvent name="createDonorEvent" type="force:createRecord"/>
+    <aura:registerEvent name="homeEvent" type="force:navigateToObjectHome"/>
+    <aura:registerEvent name="editEvent" type="force:editRecord"/> 
+    
+ <div class="container">  
+    <!--Page header START-->
+    <!--<div class="slds-page-header"> 
+        <div class="slds-media__body">
+            <h1 class="slds-page-header__title slds-truncate slds-align-middle" 
+                title="{!v.pagetitle}">{!v.pagetitle}</h1>
+            <p class="slds-text-body_small slds-line-height_reset">
+                Save life, Donate Blood !!</p>
+        </div>
+    </div>-->
+    <!--Page header END-->  
+     
+    <!--Home Create Record -->
+    <div class="homeBtn">
+        <lightning:button label="Home" 
+                          onclick="{!c.gotoBloodDonorHome}" />
+        <lightning:button label="New" 
+                          onclick="{!c.createDonor}" />
+    </div> 
+    <!--New Btn end -->
+     
+    
+    <!--Page Messages -->
+    <aura:if isTrue="{!v.statusMsg!=null}"> 
+    <div class="sections slds-theme_alert-texture statusMessage">
+         <h2> {!v.statusMsg} </h2>   
+    </div>
+    </aura:if>  
+    <!--Page Messages end-->   
+          <!---Input Section START-->
+         <div class="sections"> 
+             <div class="slds-form">
+                <div class="slds-form-element slds-theme_alert-texture"> 
+                        <div class="slds-form-element__control"> 
+                           <lightning:select name="select"
+                                             aura:id="BloodGroup"  
+                                             label="Blood Group" 
+                                             required="true" 
+                                             messageWhenValueMissing="Choose a group"> 
+                               
+                            <aura:iteration items="{!v.bloodTypes}" var="type">
+                                <option value="{!type.value}" text="{!type.label}">
+                                </option>
+                            </aura:iteration>
+                        </lightning:select>
+                        </div>
+                </div>
+                 <div class="slds-form-element"> 
+                     <div class="slds-form-element__control"> 
+                         <lightning:input type="text" 
+                                          messageWhenPatternMismatch="Too many characters!" 
+                                          pattern=".{0,5}" 
+                                          name="input-name" 
+                                          aura:id="zipcode" 
+                                          value="{!v.zip}"
+                                          label="Enter zipcode" />
+        
+                     </div>
+                 </div> <br></br>
+                 <div class="slds-form-element">
+                     <div class="slds-form-element__control">
+                           <lightning:button aura:id="button" 
+                                             label="Search"  
+                                             onclick="{! c.filterDonors }" />
+        
+                     </div>
+                 </div> 
+              </div>
+           </div>
+          <!---Input Section END--> 
+                
+          <!---output Section Start--> 
+          <div class="sections"> 
+            <table class="slds-table slds-table_cell-buffer ">
+              <aura:iteration items="{!v.donors}" var="donor"> 
+               <tbody>
+                <tr>
+                    <td data-label="Name"> 
+                        <lightning:card class="slds-theme_alert-texture">
+                            <aura:set attribute="title">
+                                <span class="slds-avatar slds-avatar--circle">
+                                    <img src="https://i.stack.imgur.com/RJACY.jpg" 
+                                     alt="person name" 
+                                     class="imgCls"/> 
+                                </span> 
+                                <div class="names">
+                                    <ui:outputURL value="{!'/'+donor.Id}" 
+                                                  target="_top"
+                                                  label="{! donor.First_Name__c +' '+donor.Name}"/>  
+                                    <br></br>
+                                    <span> {!donor.Email_Address__c } </span>
+                                </div> 
+                            </aura:set>
+                            
+                            <aura:set attribute="actions">
+                                
+                            </aura:set>
+                            <p class="slds-p-horizontal--small"> 
+                                <lightning:badge label="{!donor.Blood_Group__c}"/>
+                                <lightning:badge label="{!donor.ZipCode__c}"/>
+                                
+                            </p>
+                            <p> </p>
+                            <aura:set attribute="footer"> 
+                                <lightning:button label="Edit" 
+                                                  value="{!donor.Id}"
+                         						  onclick="{!c.modifyDonor}" />
+                                <lightning:button label="Call"/> 
+                                <lightning:button label="Email"  
+                                                  onclick="{!c.emailDonors}" 
+                                                   value="{!donor.Id}"/> 
+                            </aura:set>
+                       </lightning:card> 
+                    </td>
+                   
+                </tr>     
+              </tbody>  
+            </aura:iteration> 
+          </table> 
+         </div>
+         <!---Output Section END-->
+          
+         
+    </div>             
+    <!--container end-->
+    
+    
+</aura:component>

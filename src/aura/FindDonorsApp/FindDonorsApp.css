@@ -1,0 +1,48 @@
+.THIS { 
+}
+.THIS .statusMessage{
+    background-color:#ffc;
+    padding:0.5rem;
+    font-size:10px;
+}
+.THIS .error{
+    background-color:red; 
+}
+.THIS .info{
+    background-color:green; 
+}
+.THIS .slds-text-body_small {
+     font-size:10px;
+}
+.THIS .names{
+    margin-left:1rem;
+}
+.THIS .slds-card__header{
+    margin:0rem 0rem -2.25rem 0rem;
+}
+.THIS .slds-page-header__title{
+     font-size:20px;
+}
+
+.THIS .slds-truncate{ 
+     width : 100%; 
+} 
+ 
+.THIS .slds-table td{
+    margin-left:10px;
+}  
+.THIS .slds-avatar{
+    width: 5rem;
+    height: 5rem;
+}
+.THIS .sections{
+    margin:36px; 
+} 
+.THIS .slds-form{
+    padding: 20px; 
+    border-radius : 50%;
+    background-color:#ffc;
+}
+.THIS .slds-form-element{
+    margin:5px; 
+}
